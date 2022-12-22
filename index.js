@@ -2,8 +2,6 @@
 
 const fs = require("fs");
 const util = require("util");
-// const chalk = require("chalk");
-// import chalk from "chalk";
 const colors = require("@colors/colors");
 
 // Method  #2
@@ -12,7 +10,9 @@ const colors = require("@colors/colors");
 // Method #3
 const { lstat } = fs.promises;
 
-fs.readdir(process.cwd(), async (err, filenames) => {
+const targetDir = process.argv[2] || process.cwd();
+
+fs.readdir(targetDir, async (err, filenames) => {
   if (err) {
     // error handling code here
     // throw new Error(err)
