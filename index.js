@@ -3,6 +3,7 @@
 const fs = require("fs");
 const util = require("util");
 const colors = require("@colors/colors");
+const path = require("path");
 
 // Method  #2
 // const lstat = util.promisify(fs.lstat);
@@ -20,7 +21,7 @@ fs.readdir(targetDir, async (err, filenames) => {
   }
 
   const statPromises = filenames.map((filename) => {
-    return lstat(filename);
+    return lstat(path.join(targetDir, filename));
   });
 
   const allStats = await Promise.all(statPromises);
